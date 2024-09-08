@@ -1,3 +1,15 @@
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set output using environment file
+        run: echo "my_output=some_value" >> $GITHUB_OUTPUT
+
+      - name: Use the output
+        run: echo "The output is ${{ steps.my_step.outputs.my_output }}"
 # Local Variables
 locals {
     aks_cluster_name    = "aks-${local.resource_group_name}"
